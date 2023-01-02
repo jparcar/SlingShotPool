@@ -13,6 +13,7 @@ public class Ball : MonoBehaviour
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
@@ -31,7 +32,7 @@ public class Ball : MonoBehaviour
         {
             _rigidbody2D.AddForce(Vector2.right * fuerza);
         }
-    }
+    }*/
     private void FixedUpdate()
     {
         //if(Mathf.Abs(_rigidbody2D.velocity.X)<= ConstantsPhisics.VELOCITY_NULL)

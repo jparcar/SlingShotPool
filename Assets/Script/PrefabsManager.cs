@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class PrefabsManager : MonoBehaviour
 {
-    private static GameManager instance = null;
-    private BallPlayer ballPlayer;
-    private PlayerController playerController;
+    private static PrefabsManager instance = null;
 
+    [SerializeField]
+    private  GameObject pivot;
     // Game Instance Singleton
-    public static GameManager Instance
+    public static PrefabsManager Instance
     {
         get
         {
@@ -17,13 +17,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public BallPlayer BallPlayer { get => ballPlayer; set => ballPlayer = value; }
-    public PlayerController PlayerController { get => playerController; set => playerController = value; }
+    public GameObject Pivot { get => pivot; set => pivot = value; }
 
     private void Awake()
     {
         // if the singleton hasn't been initialized yet
-        print("Readyy");
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -32,5 +30,4 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
-
 }

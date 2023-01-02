@@ -37,7 +37,7 @@ public class Floor : MonoBehaviour
             }
             if (Mathf.Abs(rigibodyBall.velocity.y )>ConstantsPhisics.VELOCITY_NULL)
             {
-                print("Velocidad en contra: " +(Vector2.down * Mathf.Sign(rigibodyBall.velocity.y) * coeficientFloor));
+                //print("Velocidad en contra: " +(Vector2.down * Mathf.Sign(rigibodyBall.velocity.y) * coeficientFloor));
                 rigibodyBall.AddForce(Vector2.down * Mathf.Sign(rigibodyBall.velocity.y) * coeficientFloor);
             }
         }
