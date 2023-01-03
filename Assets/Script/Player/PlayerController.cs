@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private bool agarraBola = false;
+    private bool inShot = false;
 
     [SerializeField]
     private GameObject ballPlayer;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         {
             agarraBola = true;
             ballPlayer.GetComponent<BallPlayer>().moveBall();
+            inShot = true;
 
         }
         else
@@ -32,7 +34,12 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-
+        if(inShot && !GameManager.Instance.GestorBall.ballsInMove())
+        {
+            inShot = false;
+            GameManager.Instance.changePlayer(ballPlayer.GetComponent<BallPlayer>().FirstBall);
+            ballPlayer.GetComponent<BallPlayer>().FirstBall = 0; 
+        }
 
         if (!agarraBola)
         { return; }

@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-namespace Assets.Script.Constants
-{
-    [CreateAssetMenu(fileName = "BallState", menuName = "BallState", order = 0)]
-    public class BallState : ScriptableObject
-    {
 
-    }
-}
 
 public enum BallEstate
 {
 
+}
+
+public enum BallPlayerFocus
+{
+    none,
+    smooth=1,
+    striped=9
 }

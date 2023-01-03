@@ -29,7 +29,7 @@ public class Floor : MonoBehaviour
     {
         if (collision.tag.ToLower() == "ball")
         {
-            print("Colisiona con el suelo");
+            //print("Colisiona con el suelo");
             Rigidbody2D rigibodyBall = collision.GetComponent<Rigidbody2D>();
             if(Mathf.Abs(rigibodyBall.velocity.x) >ConstantsPhisics.VELOCITY_NULL)
             {
