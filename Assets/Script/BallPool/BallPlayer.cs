@@ -14,6 +14,7 @@ public class BallPlayer : Ball
 
     private void Start()
     {
+        base.Start();
         GameManager.Instance.BallPlayer = this;
     }
     
@@ -35,6 +36,9 @@ public class BallPlayer : Ball
 
     private void Update()
     {
+        print("SE PARO LA BOLA:" +quietBall /*+" velocidad: "+ Mathf.Abs(_rigidbody2D.velocity.x * _rigidbody2D.velocity.y)*/);
+        //print("Velocidad: "+_rigidbody2D.velocity.magnitude);
+        
         if (pivot && CanBreakPivot)
         {
             //print("DISTANCIA DEL PIVOT: "+ Vector3.Distance(this.transform.position, pivot.transform.position));
@@ -63,9 +67,11 @@ public class BallPlayer : Ball
     private void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-        if(FirstBall ==0 && collision.gameObject.tag =="Ball")
+        if(FirstBall ==0 && collision.gameObject.tag == Constants.TAG_HOLE)
         {
             FirstBall = collision.gameObject.GetComponent<Ball>().getIDBall();
         }
     }
+    
+    
 }

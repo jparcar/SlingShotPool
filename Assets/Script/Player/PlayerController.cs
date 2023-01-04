@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private bool agarraBola = false;
     private bool inShot = false;
+    
 
     [SerializeField]
     private GameObject ballPlayer;
@@ -32,10 +33,18 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    private float waiTime =0;
     private void Update()
     {
-        if(inShot && !GameManager.Instance.GestorBall.ballsInMove())
+        if (!agarraBola &&!ballPlayer.GetComponent<BallPlayer>().QuietBall)
         {
+            //inShot = true;
+        }
+
+
+        if(  !agarraBola &&inShot && !GameManager.Instance.GestorBall.ballsInMove())
+        {
+            print("HA TERMINADO EL TURNO!!!");
             inShot = false;
             GameManager.Instance.changePlayer(ballPlayer.GetComponent<BallPlayer>().FirstBall);
             ballPlayer.GetComponent<BallPlayer>().FirstBall = 0; 

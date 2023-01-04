@@ -13,32 +13,36 @@ public class Ball : MonoBehaviour
 
     public bool QuietBall { get => quietBall; set => quietBall = value; }
     protected Rigidbody2D _rigidbody2D;
-    private void Start()
+    protected void Start()
     {
         GameManager.Instance.GestorBall.Balls.Add(this);
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
     private void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        
     }
 
    
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-        if (_rigidbody2D.velocity.x * _rigidbody2D.velocity.y < ConstantsPhisics.VELOCITY_NULL)
+        if (_rigidbody2D.velocity.magnitude < 0.01f )
         {
-            QuietBall = true;
+            _rigidbody2D.velocity = Vector2.zero;
+            quietBall = true;
         }
         else
         {
-            QuietBall = false;
+            quietBall = false;
+            
+            
         }
     }
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Hole")
+        //quietBall = false;
+        if (collision.gameObject.tag == Constants.TAG_HOLE)
         {
             if (GameManager.Instance.putBall(numBola))
             {
@@ -49,6 +53,7 @@ public class Ball : MonoBehaviour
 
         }
     }
+
     public int getIDBall()
     {
         return numBola;

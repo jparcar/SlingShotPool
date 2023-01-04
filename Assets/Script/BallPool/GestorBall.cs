@@ -16,8 +16,10 @@ public class GestorBall : MonoBehaviour
     }
     public bool ballsInMove()
     {
+        
         foreach(Ball ball in Balls)
         {
+            //print("Bola en movimiento: " + ball.QuietBall);
             if (!ball.QuietBall)
             {
                 return true;

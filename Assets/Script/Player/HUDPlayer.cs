@@ -19,12 +19,13 @@ public class HUDPlayer : MonoBehaviour
     }
     public void setTextPlayer(string text)
     {
-        idPlayerText.GetComponent<TextMeshPro>().text = text;
+        //print("JUGADOR: "+text +" "+ idPlayerText);
+        idPlayerText.GetComponent<TMPro.TextMeshProUGUI>().text = text;
 
     }
     public string getTextPlayer()
     {
-        return idPlayerText.GetComponent<TextMeshPro>().text ;
+        return idPlayerText.GetComponent<TMPro.TextMeshProUGUI>().text ;
     }
 
     public void showWinEscene()
