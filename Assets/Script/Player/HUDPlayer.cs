@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HUDPlayer : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class HUDPlayer : MonoBehaviour
     [SerializeField]
     private GameObject esceneWin;
     private GameObject textPlayerWin;
+    [SerializeField]
+    private GameObject buttonEnd;
 
     public void Start()
     {
@@ -30,7 +34,9 @@ public class HUDPlayer : MonoBehaviour
 
     public void showWinEscene()
     {
+        buttonEnd.SetActive(true);
         esceneWin.SetActive(true);
-        textPlayerWin.GetComponent<TextMeshPro>().text += getTextPlayer();
+        buttonEnd.GetComponent<Button>().onClick.AddListener(() => { SceneManager.LoadScene(1); });
+        textPlayerWin.GetComponent<TMPro.TextMeshProUGUI>().text += getTextPlayer();
     }
 }

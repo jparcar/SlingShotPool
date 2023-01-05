@@ -27,7 +27,7 @@ public class BallPlayer : Ball
         _springJoint2D.autoConfigureDistance = false;
         _springJoint2D.distance = 0.5f;
         pivot = Instantiate(PrefabsManager.Instance.Pivot);
-        pivot.transform.position = this.transform.position;
+        pivot.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, pivot.transform.position.z);
         _springJoint2D.connectedBody = pivot.GetComponent<Rigidbody2D>();
 
         CanBreakPivot = false;
@@ -41,7 +41,7 @@ public class BallPlayer : Ball
         
         if (pivot && CanBreakPivot)
         {
-            //print("DISTANCIA DEL PIVOT: "+ Vector3.Distance(this.transform.position, pivot.transform.position));
+            print("DISTANCIA DEL PIVOT: "+ Vector3.Distance(this.transform.position, pivot.transform.position));
             if(Vector3.Distance(this.transform.position,pivot.transform.position) <1.25f)
             {
                 //print("ENTRA EN EL TRIGGER");

@@ -102,7 +102,11 @@ public class GameManager : MonoBehaviour
             canBall = true;
         
         if(players[playerInPlaying].FocusIn8 && bola == 8)
+        {
             canBall = true;
+            hUDPlayer.showWinEscene();
+        }
+            
 
         //print("Has metido la bola correcta??? "+canBall);
         addTurnRivalPlayer(canBall);
