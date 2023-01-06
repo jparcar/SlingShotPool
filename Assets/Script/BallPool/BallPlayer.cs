@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BallPlayer : Ball
 {
+    [SerializeField]
+    private GameObject walls;
+
     private GameObject pivot;
     private SpringJoint2D _springJoint2D;
     private bool  canBreakPivot = false;
@@ -29,7 +32,7 @@ public class BallPlayer : Ball
         pivot = Instantiate(PrefabsManager.Instance.Pivot);
         pivot.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, pivot.transform.position.z);
         _springJoint2D.connectedBody = pivot.GetComponent<Rigidbody2D>();
-
+        walls.SetActive(false);
         CanBreakPivot = false;
 
     }
@@ -44,8 +47,10 @@ public class BallPlayer : Ball
             print("DISTANCIA DEL PIVOT: "+ Vector3.Distance(this.transform.position, pivot.transform.position));
             if(Vector3.Distance(this.transform.position,pivot.transform.position) <1.25f)
             {
+                walls.SetActive(true);
                 //print("ENTRA EN EL TRIGGER");
                 GetComponent<Rigidbody2D>().gravityScale = 0;
+
                 Destroy(_springJoint2D);
                 Destroy(pivot);
             }

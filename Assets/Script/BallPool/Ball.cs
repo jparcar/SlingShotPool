@@ -50,6 +50,7 @@ public class Ball : MonoBehaviour
                 
             }
             this.transform.position = respawnPoint.position;
+            _rigidbody2D.velocity = Vector2.zero;
 
         }
     }

@@ -31,21 +31,7 @@ public class Floor : MonoBehaviour
         {
             //print("Colisiona con el suelo");
             Rigidbody2D rigibodyBall = collision.GetComponent<Rigidbody2D>();
-            /*
-            if(Mathf.Abs(rigibodyBall.velocity.x) >ConstantsPhisics.VELOCITY_NULL)
-            {
-                rigibodyBall.AddForce(Vector2.left*Mathf.Sign(rigibodyBall.velocity.x)*coeficientFloor);
-            }
-
-
-            if (Mathf.Abs(rigibodyBall.velocity.y )>ConstantsPhisics.VELOCITY_NULL)
-            {
-                //print("Velocidad en contra: " +(Vector2.down * Mathf.Sign(rigibodyBall.velocity.y) * coeficientFloor));
-                rigibodyBall.AddForce(Vector2.down * Mathf.Sign(rigibodyBall.velocity.y) * coeficientFloor);
-            }*/
             Vector2 friccion = -rigibodyBall.velocity * this.coeficientFloor;
-
-            // Aplicamos la fuerza de fricción al objeto
             rigibodyBall.AddForce(friccion);
         }
     }
